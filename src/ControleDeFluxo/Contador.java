@@ -1,17 +1,31 @@
 package ControleDeFluxo;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import java.util.Scanner;
+
 public class Contador {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner terminal = new Scanner(System.in);
+        System.out.println("Digite o primeiro parâmetro");
+        int parametroUm = terminal.nextInt();
+        System.out.println("Digite o segundo parâmetro");
+        int parametroDois = terminal.nextInt();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        try {
+            //chamando o método contendo a lógica de contagem
+            contar(parametroUm, parametroDois);
+
+        }catch (ParametrosInvalidosException exception) {
+            System.out.println(exception.getMessage());
         }
+
+    }
+    static void contar(int parametroUm, int parametroDois ) throws ParametrosInvalidosException {
+        if parametroUm > parametroDois {
+            throw new ParametrosInvalidosException("O segundo parâmetro deve ser maior que o primeiro.");
+        }
+
+        int contagem = parametroDois - parametroUm;
+        //realizar o for para imprimir os números com base na variável contagem
     }
 }
